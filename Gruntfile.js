@@ -242,7 +242,7 @@ module.exports = function(grunt) {
 			},
 
 			scripts: {
-				files: 'src/scripts//**/*.js',
+				files: 'src/js/**/*.js',
 				tasks: ['newer:jshint', 'beep:error:*', 'newer:copy:scripts', 'concat', 'uglify'], // Only copy files that have changed
 				options: {
 					livereload: true,
