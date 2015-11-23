@@ -155,12 +155,14 @@
                                 }
 
                                 setInterval(update, SECOND, elementID);
+                                update(elementID);
 
                                 var effortID = elementID + '-effort';
 
                                 if (document.getElementById(effortID)) {
                                     setInterval(effort, SECOND, elementID, effortID);
                                 }
+                                effort(elementID, effortID);
                             }
 
                         }
