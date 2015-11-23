@@ -116,7 +116,7 @@
 
 
                             var minutesForEffort = Math.floor((duration / 1000) / 60);
-                            document.getElementById(UniqueID).setAttribute('data-alapsed', minutesForEffort);
+                            document.getElementById(UniqueID).setAttribute('data-elapsed', minutesForEffort);
 
                             var days = parseInt(duration / DAY);
                             duration = duration % DAY;
@@ -180,8 +180,8 @@
                             var temperature = Math.round(data.main.temp);
                             var wind_speed = data.wind.speed;
 
-                            weatherElements[0].querySelector(".temperature").innerHTML = temperature + '&deg;C';
-                            weatherElements[0].querySelector(".wind_speed").innerHTML = wind_speed + 'm/s';
+                            weatherElements[0].querySelector(".temperature").innerHTML = temperature + ' &deg;C';
+                            weatherElements[0].querySelector(".wind_speed").innerHTML = wind_speed + ' m/s';
                         } catch (e) {
                             console.log('error', e);
                         }
@@ -224,11 +224,11 @@
                     var stepID = "step_" + new Date().getTime().toString();
                     stepsContainer.id = stepID;
 
-                    var timeAlapsed = document.getElementById(timeID).getAttribute('data-alapsed');
+                    var timeElapsed = document.getElementById(timeID).getAttribute('data-elapsed');
 
-                    var caloriesBurnt = numberWithCommas(Math.round(calorieRate * timeAlapsed));
+                    var caloriesBurnt = numberWithCommas(Math.round(calorieRate * timeElapsed));
 
-                    var stepsTaken = numberWithCommas(Math.round(stepsRate * timeAlapsed));
+                    var stepsTaken = numberWithCommas(Math.round(stepsRate * timeElapsed));
 
                     //set to display
                     document.getElementById(calorieID).innerHTML = caloriesBurnt;
