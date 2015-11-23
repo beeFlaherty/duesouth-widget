@@ -40,17 +40,17 @@
             <span class="stat-title">Current time in Antarctica</span>
         </p>
         <p>
-            <span id="set-one" data-countdown="nov 10 2015 14:30:35"></span>
+            <span id="set-one" data-countdown="nov 1 2015 17:05:00"></span>
             <span class="stat-title">Duration</span>
         </p>
     </div>
     <div class="ds-dashboard-widgets effort" id="set-one-effort">
         <p>
-            <span class="stat calories" data-calories ="10000">&#160;</span>
+            <span class="stat calories" data-calories="10000">&#160;</span>
             <span class="stat-title">Calories burnt</span>
         </p>
         <p>
-            <span class="stat steps" data-steps ="23000">&#160;</span>
+            <span class="stat steps" data-steps ="41714">&#160;</span> <!-- 730 miles * 2k steps / 35 days = 41714 -->
             <span class="stat-title">Steps taken</span>
         </p>
     </div>
@@ -59,17 +59,17 @@
         (function() {
             'use strict';
 
+            var
+                SECOND = 1000,
+                MINUTE = 60 * SECOND,
+                HOUR = 60 * MINUTE,
+                DAY = 24 * HOUR;
+
             var timezone = function() {
 
                     var timezoneElements = document.querySelectorAll("[data-timezone]");
 
                     if (timezoneElements.length) {
-                        var
-                            SECOND = 1000,
-                            MINUTE = 60 * SECOND,
-                            HOUR = 60 * MINUTE,
-                            DAY = 24 * HOUR;
-
                         var uniformNumber = function(n) {
                             if (n < 10) n = '0' + n;
 
@@ -96,12 +96,6 @@
                     var countDownElements = document.querySelectorAll("[data-countdown]");
 
                     if (countDownElements.length) {
-                        var
-                            SECOND = 1000,
-                            MINUTE = 60 * SECOND,
-                            HOUR = 60 * MINUTE,
-                            DAY = 24 * HOUR;
-
                         var uniformNumber = function(n) {
                             if (n < 10) n = '0' + n;
 
@@ -110,13 +104,11 @@
 
                         var update = function(UniqueID) {
                             var currentDate = new Date();
-                            var duration = currentDate - startDate - DAY;
+                            var duration = currentDate - startDate;
 
                             if (duration < 0) duration = 0;
 
-
-                            var minutesForEffort = Math.floor((duration / 1000) / 60);
-                            document.getElementById(UniqueID).setAttribute('data-elapsed', minutesForEffort);
+                            document.getElementById(UniqueID).setAttribute('data-elapsed', duration);
 
                             var days = parseInt(duration / DAY);
                             duration = duration % DAY;
@@ -157,7 +149,7 @@
                                 var effortID = elementID + '-effort';
 
                                 if (document.getElementById(effortID)) {
-                                    setInterval(effort, SECOND, elementID, effortID);
+                                    setInterval(effort, SECOND * 5, elementID, effortID);
                                 }
                                 effort(elementID, effortID);
                             }
@@ -234,9 +226,9 @@
 
                     var timeElapsed = document.getElementById(timeID).getAttribute('data-elapsed');
 
-                    var caloriesBurnt = numberWithCommas(Math.round(calorieRate * timeElapsed));
+                    var caloriesBurnt = numberWithCommas(Math.round(calorieRate * (timeElapsed / MINUTE)));
 
-                    var stepsTaken = numberWithCommas(Math.round(stepsRate * timeElapsed));
+                    var stepsTaken = numberWithCommas(Math.round(stepsRate * (timeElapsed / MINUTE)));
 
                     //set to display
                     document.getElementById(calorieID).innerHTML = caloriesBurnt;
