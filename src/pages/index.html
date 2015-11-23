@@ -161,7 +161,6 @@
                     };
 
                     var updateWeather = function(data) {
-                        console.log(data);
                         try {
                             var temperature = Math.round(data.main.temp);
                             var wind_speed = data.wind.speed;
@@ -199,9 +198,6 @@
                 },
 
                 effort = function(timeID, effortID) {
-
-                    console.log(timeID + ', ' + effortID);
-
                     var calorieContainer = document.querySelector("#" + effortID + " > p .calories");
                     var calorieRate = calorieContainer.getAttribute('data-calories') / 1440;
                     var calorieID = "cal_" + new Date().getTime().toString();
