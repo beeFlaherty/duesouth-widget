@@ -32,10 +32,8 @@
         <p><span class="stat wind_speed">&#160;</span> <span class="stat-title">Current windspeed in Antarctica</span></p>
     </div>
     <div class="ds-dashboard-widgets">
-        <p> <span class="stat time" data-timezone="-3">&#160;</span> <span class="stat-title">Current time in Antarctica</span></p>
-        <p id="set-one" data-countdown="nov 10 2015 14:30:35" ></p>
-        <span class="stat-title"> Duration</span>
-
+        <p><span class="stat time" data-timezone="-3">&#160;</span> <span class="stat-title">Current time in Antarctica</span></p>
+        <p><span id="set-one" data-countdown="nov 10 2015 14:30:35"></span><span class="stat-title"> Duration</span></p>
     </div>
     <div class="ds-dashboard-widgets effort" id="set-one-effort">
        <p> <span class="stat calories" data-calories ="10000">&#160;</span> <span class="stat-title">Calories burnt</span></p>
@@ -116,7 +114,7 @@
 
                             var seconds = parseInt(duration / SECOND);
 
-                            document.getElementById(UniqueID).innerHTML = days + ' days ' + hours + ' hours ' + minutes + ' min ' + seconds;
+                            document.getElementById(UniqueID).innerHTML = days + ' days ' + hours + ' hours ' + minutes + ' min ' + seconds + ' sec';
                             //set data here
                         };
 
