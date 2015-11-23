@@ -24,7 +24,7 @@
 
 <body>
 
-    <div class="ds-dashboard-widgets" data-cityId="5020938">
+    <div class="ds-dashboard-widgets" data-lat="-78.4644904" data-lon="106.8317842">
         <p>
             <span class="stat temperature">&#160;</span>
             <span class="stat-title">Current temperature in Antarctica</span>
@@ -169,7 +169,7 @@
 
                 weather = function() {
 
-                    var weatherElements = document.querySelectorAll("[data-cityId]");
+                    var weatherElements = document.querySelectorAll("[data-lat]");
                     var onJsonLoad = function(data) {
                         var myArr = JSON.parse(data);
                         updateWeather(myArr);
@@ -191,13 +191,13 @@
 
                         for (var i in weatherElements) {
                             if (weatherElements.hasOwnProperty(i)) {
-                                //this may need to be switched to latlong
-                                var cityId = weatherElements[i].getAttribute('data-cityId');
+                                var lat = weatherElements[i].getAttribute('data-lat');
+                                var lon = weatherElements[i].getAttribute('data-lon');
                                 var UniqueID = "weather_" + new Date().getTime().toString();
                                 weatherElements[i].id = UniqueID;
 
                                 var xhr = new XMLHttpRequest();
-                                var url = 'http://api.openweathermap.org/data/2.5/weather?id=' + cityId + '&units=metric&APPID=031b030c6e7ef548c603b40c69fe5cf2&';
+                                var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=031b030c6e7ef548c603b40c69fe5cf2&';
 
                                 xhr.onreadystatechange = function() {
                                     if (xhr.readyState == 4 && xhr.status == 200) {
