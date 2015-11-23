@@ -181,7 +181,7 @@
                             var wind_speed = data.wind.speed;
 
                             weatherElements[0].querySelector(".temperature").innerHTML = temperature + '&deg;C';
-                            weatherElements[0].querySelector(".wind_speed").innerHTML = wind_speed;
+                            weatherElements[0].querySelector(".wind_speed").innerHTML = wind_speed + 'm/s';
                         } catch (e) {
                             console.log('error', e);
                         }
@@ -197,7 +197,7 @@
                                 weatherElements[i].id = UniqueID;
 
                                 var xhr = new XMLHttpRequest();
-                                var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=031b030c6e7ef548c603b40c69fe5cf2&';
+                                var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=8c5974c961ce95405a6d008676ca4555&';
 
                                 xhr.onreadystatechange = function() {
                                     if (xhr.readyState == 4 && xhr.status == 200) {
