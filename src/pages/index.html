@@ -12,12 +12,24 @@
         margin: 10px;
         padding: 10px;
         float: left;
-        border: 1px solid #ccc;
         text-align: center;
     }
 
     .ds-dashboard-widgets .stat, .ds-dashboard-widgets .stat-title{
         display: block;
+        text-transform: uppercase;
+    }
+
+    .ds-dashboard-widgets .stat {
+        color: #198089;
+        font-family: "futura-pt";
+        font-weight: bold;
+        font-size: 40px;
+    }
+
+    .ds-dashboard-widgets .stat-title {
+        color: #737373;
+        font-size: 18px;
     }
     </style>
 </head>
@@ -27,21 +39,21 @@
     <div class="ds-dashboard-widgets" data-lat="-78.4644904" data-lon="106.8317842">
         <p>
             <span class="stat temperature">&#160;</span>
-            <span class="stat-title">Current temperature in Antarctica</span>
+            <span class="stat-title">Antartic temperature</span>
         </p>
         <p>
             <span class="stat wind_speed">&#160;</span>
-            <span class="stat-title">Current windspeed in Antarctica</span>
+            <span class="stat-title">Antartic windspeed</span>
         </p>
     </div>
     <div class="ds-dashboard-widgets">
         <p>
             <span class="stat time" data-timezone="-3">&#160;</span>
-            <span class="stat-title">Current time in Antarctica</span>
+            <span class="stat-title">Antartic time</span>
         </p>
         <p>
-            <span id="set-one" data-countdown="nov 1 2015 17:05:00"></span>
-            <span class="stat-title">Duration</span>
+            <span class="stat" id="set-one" data-countdown="nov 1 2015 17:05:00"></span>
+            <span class="stat-title">Expedition duration</span>
         </p>
     </div>
     <div class="ds-dashboard-widgets effort" id="set-one-effort">
