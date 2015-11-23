@@ -65,17 +65,17 @@
                 HOUR = 60 * MINUTE,
                 DAY = 24 * HOUR;
 
+            var uniformNumber = function(n) {
+                if (n < 10) n = '0' + n;
+
+                return n;
+            };
+
             var timezone = function() {
 
                     var timezoneElements = document.querySelectorAll("[data-timezone]");
 
                     if (timezoneElements.length) {
-                        var uniformNumber = function(n) {
-                            if (n < 10) n = '0' + n;
-
-                            return n;
-                        };
-
                         for (var i in timezoneElements) {
                             if (timezoneElements.hasOwnProperty(i)) {
                                 var timezone = parseInt(timezoneElements[i].getAttribute('data-timezone'));
@@ -121,7 +121,7 @@
 
                             var seconds = parseInt(duration / SECOND);
 
-                            document.getElementById(UniqueID).innerHTML = days + ' days ' + hours + ' hours ' + minutes + ' min ' + seconds + ' sec';
+                            document.getElementById(UniqueID).innerHTML = uniformNumber(days) + ' days ' + uniformNumber(hours) + ' hours ' + uniformNumber(minutes) + ' min ' + uniformNumber(seconds) + ' sec';
                             //set data here
                         };
 
