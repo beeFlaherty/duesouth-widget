@@ -12,10 +12,27 @@
 
     .ds-dashboard-widgets {
         width: 400px;
-        margin: 10px;
-        padding: 10px;
+        padding: 10px 0;
         float: left;
         text-align: center;
+    }
+
+    @media screen and (min-width: 0px) {
+        .ds-dashboard-widgets {
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width: 800px) {
+        .ds-dashboard-widgets {
+            width: 50%;
+        }
+    }
+
+    @media screen and (min-width: 1000px) {
+        .ds-dashboard-widgets {
+            width: 33%;
+        }
     }
 
     .ds-dashboard-widgets .stat, .ds-dashboard-widgets .stat-title{
@@ -28,9 +45,16 @@
         font-family: "futura-pt";
         font-weight: bold;
         font-size: 100px;
-        letter-spacing: -10px;
+        letter-spacing: -9px;
         line-height: 0.8em;
         padding-bottom: 15px;
+    }
+
+    .ds-dashboard-widgets .stat small {
+        font-size: 45%;
+        letter-spacing: -5px;
+        font-weight: normal;
+        line-height: 0.8em;
     }
 
     .ds-dashboard-widgets .stat-title {
@@ -141,7 +165,7 @@
 
                             var seconds = parseInt(duration / SECOND);
 
-                            document.getElementById(UniqueID).innerHTML = uniformNumber(days) + ' days ' + uniformNumber(hours) + ' hours ' + uniformNumber(minutes) + ' min ' + uniformNumber(seconds) + ' sec';
+                            document.getElementById(UniqueID).innerHTML = uniformNumber(days) + ' <small>days</small> ' + uniformNumber(hours) + ' <small>hrs</small> ' + uniformNumber(minutes) + ' <small>min</small> ' + uniformNumber(seconds) + ' <small>sec</small>';
                             //set data here
                         };
 
@@ -192,8 +216,8 @@
                             var temperature = Math.round(data.main.temp);
                             var wind_speed = data.wind.speed;
 
-                            weatherElements[0].querySelector(".temperature").innerHTML = temperature + ' &deg;C';
-                            weatherElements[0].querySelector(".wind_speed").innerHTML = wind_speed + ' m/s';
+                            weatherElements[0].querySelector(".temperature").innerHTML = temperature + ' <small>&deg;C</small>';
+                            weatherElements[0].querySelector(".wind_speed").innerHTML = wind_speed + '<small>m/s</small>';
                         } catch (e) {
                             console.log('error', e);
                         }
