@@ -211,21 +211,22 @@
 
                             if (duration < 0) duration = 0;
 
-                            document.getElementById(UniqueID).setAttribute('data-elapsed', duration);
+                            if (document.getElementById(UniqueID)) {
+                                document.getElementById(UniqueID).setAttribute('data-elapsed', duration);
 
-                            var days = parseInt(duration / DAY);
-                            duration = duration % DAY;
+                                var days = parseInt(duration / DAY);
+                                duration = duration % DAY;
 
-                            var hours = parseInt(duration / HOUR);
-                            duration = duration % HOUR;
+                                var hours = parseInt(duration / HOUR);
+                                duration = duration % HOUR;
 
-                            var minutes = parseInt(duration / MINUTE);
-                            duration = duration % MINUTE;
+                                var minutes = parseInt(duration / MINUTE);
+                                duration = duration % MINUTE;
 
-                            var seconds = parseInt(duration / SECOND);
+                                var seconds = parseInt(duration / SECOND);
 
-                            document.getElementById(UniqueID).innerHTML = uniformNumber(days) + ' <small>days</small> ' + uniformNumber(hours) + ' <small>hrs</small> ' + uniformNumber(minutes) + ' <small>min</small> ' + uniformNumber(seconds) + ' <small>sec</small>';
-                            //set data here
+                                document.getElementById(UniqueID).innerHTML = uniformNumber(days) + ' <small>days</small> ' + uniformNumber(hours) + ' <small>hrs</small> ' + uniformNumber(minutes) + ' <small>min</small> ' + uniformNumber(seconds) + ' <small>sec</small>';
+                            }
                         };
 
 
