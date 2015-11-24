@@ -152,12 +152,26 @@
 
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState == 4 && xhr.status == 200) {
-                        callback(xhr.responseText);
+                        callback(JSON.parse(xhr.responseText));
                     }
                 };
 
                 xhr.open('GET', url, true);
                 xhr.send();
+            };
+
+            var jsonp = function(url, callback) {
+                var callbackName = 'callback' + Math.round(Math.random() * 99999);
+
+                window[callbackName] = function(data) {
+                    callback(data);
+                    delete window[callbackName];
+                    scriptEl.parentNode.removeChild(scriptEl);
+                };
+
+                var scriptEl = document.createElement('script');
+                scriptEl.setAttribute('src', url + '&callback=' + callbackName);
+                document.body.appendChild(scriptEl);
             };
 
             var timezone = function() {
@@ -251,10 +265,6 @@
                 weather = function() {
 
                     var weatherElements = document.querySelectorAll("[data-lat]");
-                    var onJsonLoad = function(data) {
-                        var myArr = JSON.parse(data);
-                        updateWeather(myArr);
-                    };
 
                     var updateWeather = function(data) {
                         try {
@@ -277,29 +287,10 @@
                                 var UniqueID = "weather_" + new Date().getTime().toString();
                                 weatherElements[i].id = UniqueID;
 
-                                ajax(
+                                jsonp(
                                     '//api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=8c5974c961ce95405a6d008676ca4555',
-                                    onJsonLoad
+                                    updateWeather
                                 );
-                                // var xhr;
-                                // if (window.XMLHttpRequest) {
-                                //     // code for IE7+, Firefox, Chrome, Opera, Safari
-                                //     xhr = new XMLHttpRequest();
-                                // } else {
-                                //     // code for IE6, IE5
-                                //     xhr = new ActiveXObject("Microsoft.XMLHTTP");
-                                // }
-
-                                // var url =
-
-                                // xhr.onreadystatechange = function() {
-                                //     if (xhr.readyState == 4 && xhr.status == 200) {
-                                //         onJsonLoad(xhr.responseText);
-                                //     }
-                                // };
-
-                                // xhr.open('GET', url, true);
-                                // xhr.send();
                             }
                         }
                     }
