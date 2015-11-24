@@ -255,7 +255,7 @@
 
                             var effortID = elementID + '-effort';
 
-                            if (document.getElementById(effortID)) {
+                            if (document.querySelector("." + effortID)) {
                                 setInterval(effort, SECOND * 5, elementID, effortID);
                             }
                             effort(elementID, effortID);
