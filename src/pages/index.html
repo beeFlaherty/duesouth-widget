@@ -182,17 +182,15 @@
                 var timezoneElements = document.querySelectorAll("[data-timezone]");
 
                 if (timezoneElements.length) {
-                    for (var i in timezoneElements) {
-                        if (timezoneElements.hasOwnProperty(i)) {
-                            var timezone = parseInt(timezoneElements[i].getAttribute('data-timezone'));
-                            var currentTime = new Date();
-                            var offsetTime = currentTime.getTime();
-                            offsetTime += currentTime.getTimezoneOffset() * MINUTE; // Get UTC
-                            offsetTime += timezone * HOUR; // Add timezone offset
-                            offsetTime = new Date(offsetTime); // Convert back to date
+                    for (var i = 0; i < timezoneElements.length; i++) {
+                        var timezone = parseInt(timezoneElements[i].getAttribute('data-timezone'));
+                        var currentTime = new Date();
+                        var offsetTime = currentTime.getTime();
+                        offsetTime += currentTime.getTimezoneOffset() * MINUTE; // Get UTC
+                        offsetTime += timezone * HOUR; // Add timezone offset
+                        offsetTime = new Date(offsetTime); // Convert back to date
 
-                            timezoneElements[i].innerHTML = uniformNumber(offsetTime.getHours()) + ':' + uniformNumber(offsetTime.getMinutes());
-                        }
+                        timezoneElements[i].innerHTML = uniformNumber(offsetTime.getHours()) + ':' + uniformNumber(offsetTime.getMinutes());
                     }
                 }
             },
@@ -234,33 +232,29 @@
 
 
 
-                    for (var i in countDownElements) {
-                        if (countDownElements.hasOwnProperty(i)) {
+                    for (var i = 0; i < countDownElements.length; i++) {
+                        var startDate = new Date(countDownElements[i].getAttribute('data-countdown'));
+                        var UniqueID = "timer_" + new Date().getTime().toString();
 
-                            var startDate = new Date(countDownElements[i].getAttribute('data-countdown'));
-                            var UniqueID = "timer_" + new Date().getTime().toString();
-
-                            if (!countDownElements[i].id) {
-                                countDownElements[i].id = UniqueID;
-                            }
-
-                            var elementID = countDownElements[i].id;
-
-                            if (isNaN(startDate.getTime())) {
-                                return false; // Only proceed if we have a current date
-                            }
-
-                            setInterval(update, SECOND, elementID);
-                            update(elementID);
-
-                            var effortID = elementID + '-effort';
-
-                            if (document.querySelector("." + effortID)) {
-                                setInterval(effort, SECOND * 5, elementID, effortID);
-                            }
-                            effort(elementID, effortID);
+                        if (!countDownElements[i].id) {
+                            countDownElements[i].id = UniqueID;
                         }
 
+                        var elementID = countDownElements[i].id;
+
+                        if (isNaN(startDate.getTime())) {
+                            return false; // Only proceed if we have a current date
+                        }
+
+                        setInterval(update, SECOND, elementID);
+                        update(elementID);
+
+                        var effortID = elementID + '-effort';
+
+                        if (document.querySelector("." + effortID)) {
+                            setInterval(effort, SECOND * 5, elementID, effortID);
+                        }
+                        effort(elementID, effortID);
                     }
                 }
 
@@ -284,18 +278,16 @@
 
                 if (weatherElements.length) {
 
-                    for (var i in weatherElements) {
-                        if (weatherElements.hasOwnProperty(i)) {
-                            var lat = weatherElements[i].getAttribute('data-lat');
-                            var lon = weatherElements[i].getAttribute('data-lon');
-                            var UniqueID = "weather_" + new Date().getTime().toString();
-                            weatherElements[i].id = UniqueID;
+                    for (var i=0; i < weatherElements.length; i++) {
+                        var lat = weatherElements[i].getAttribute('data-lat');
+                        var lon = weatherElements[i].getAttribute('data-lon');
+                        var UniqueID = "weather_" + new Date().getTime().toString();
+                        weatherElements[i].id = UniqueID;
 
-                            jsonp(
-                                '//api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=8c5974c961ce95405a6d008676ca4555',
-                                updateWeather
-                            );
-                        }
+                        jsonp(
+                            '//api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=8c5974c961ce95405a6d008676ca4555',
+                            updateWeather
+                        );
                     }
                 }
             },
