@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
     <script type="text/javascript" src="//use.typekit.net/ik/zsNivKk1hDQ-YXcv3_aytoqMsKu9U4GR83TC3ztvDr9feC32fFHN4UJLFRbh52jhWD9u52qX52baZQsKweBcjcs85QSojDyRjsTNZYm8ShNuie6kw2IuOcFzdPUaiaS0ZYm8ShNuie6kw2IuOcFzdPUCdhFydeyzSabC-cN0jWsGjAtlSh8CjhNR-kuEpRgcO1FUiABkZWF3jAF8OcFzdP37OcTzdcBX-eB0OWFTdeFzjhClp1G3ZKoDSWmyScmDSeBRZPoRdhXK2YgkdayTdAIldcNhjPJ4Z1mXiW4yOWgXH6qJ73IbMg6gJMJ7fbKCMsMMeMC6MKG4f5J7IMMjMkMfH6qJtkGbMg6FJMJ7fbKzMsMMeMb6MKG4fOMgIMMj2KMfH6qJnbIbMg6eJMJ7fbK0MsMMegM6MKG4fJCgIMMjgkMfH6qJRMIbMg6sJMJ7fbKTMsMMeM66MKG4fHGgIMMjIKMfH6qJKbIbMg64JMJ7fbKHMsMMegw6MKG4fJZmIMIjMkMfH6qJ6u9bMs6FJMJ7fbKImsMgeMb6MKG4fJmmIMIj2KMfH6qJxubbMs6BJMJ7fbKMmsMgeMv6MKG4fJBmIMIjgkMfH6qJ689bMs6sJMJ7fbKYmsMgeM66MKG4fJymIMIjIKMfqMYLvjKlgb.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/c/c45028/1w;futura-pt,2,SH7:W:i3,SH9:W:i4,SH4:W:i5,SH6:W:i7,SHD:W:i8,SHB:W:n3,Y5K:W:n4,SH3:W:n5,SH5:W:n7,SHC:W:n8;proxima-nova,2,gbh:W:i1,gbk:W:i3,gbm:W:i4,gbr:W:i6,gbt:W:i7,gbw:W:i8,gby:W:i9,gbg:W:n1,gbj:W:n3,gbl:W:n4,gbq:W:n6,gbs:W:n7,gbv:W:n8,gbx:W:n9/l?3bb2a6e53c9684ffdc9a9bf11f5b2a623a5a2311fd229ac483f9f610bff987943ede62b3088d6d999c6cd3c785dba3c64f570770d47ed25024d9695a3d9a7fecd3560132d23805381e5c9909231fecc189f7f3d6d8603a889c06278291a1f361527ba020a26990ae606d3be5272f27852289e2e723427f45839ed00b410aa56664f24f6539477102576c1b77eb8c8c3fe7859adb635ef0812e7ecf91e051f9feb70b1b9ca7cd917edbecc693498281" media="all"><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
@@ -11,31 +7,13 @@
     }
 
     .ds-dashboard-widgets {
-        width: 400px;
-        padding: 10px 0;
+        width: 100%;
+        padding: 0;
         float: left;
         text-align: center;
     }
 
-    @media screen and (min-width: 0px) {
-        .ds-dashboard-widgets {
-            width: 100%;
-        }
-    }
-
-    @media screen and (min-width: 800px) {
-        .ds-dashboard-widgets {
-            width: 50%;
-        }
-    }
-
-    @media screen and (min-width: 1000px) {
-        .ds-dashboard-widgets {
-            width: 33%;
-        }
-    }
-
-    .ds-dashboard-widgets .stat, .ds-dashboard-widgets .stat-title{
+    .ds-dashboard-widgets .stat, .ds-dashboard-widgets .stat-title {
         display: block;
         text-transform: uppercase;
     }
@@ -44,8 +22,8 @@
         color: #198089;
         font-family: "futura-pt";
         font-weight: bold;
-        font-size: 100px;
-        letter-spacing: -9px;
+        font-size: 50px;
+        letter-spacing: -4px;
         line-height: 0.8em;
         padding-bottom: 15px;
     }
@@ -59,40 +37,86 @@
 
     .ds-dashboard-widgets .stat-title {
         color: #737373;
-        font-size: 25px;
+        font-size: 20px;
         letter-spacing: 2px;
         line-height: 1.3em;
     }
+
+    @media screen and (min-width: 650px) {
+        .ds-dashboard-widgets.full-width {
+            padding: 10px 0;
+        }
+
+        .ds-dashboard-widgets.full-width {
+            width: 100%;
+        }
+
+        .ds-dashboard-widgets.half-width {
+            width: 50%;
+        }
+
+        .ds-dashboard-widgets.third-width {
+            width: 50%;
+        }
+    }
+
+    @media screen and (min-width: 800px) {
+        .ds-dashboard-widgets.full-width {
+            width: 100%;
+        }
+
+        .ds-dashboard-widgets.half-width {
+            width: 50%;
+        }
+
+        .ds-dashboard-widgets.third-width {
+            width: 33%;
+        }
+
+        .ds-dashboard-widgets .stat {
+            font-size: 100px;
+            letter-spacing: -9px;
+        }
+
+        .ds-dashboard-widgets .stat-title {
+            font-size: 25px;
+        }
+    }
     </style>
-</head>
 
-<body>
-
-    <div class="ds-dashboard-widgets" data-lat="-78.4644904" data-lon="106.8317842">
-        <p>
-            <span class="stat temperature">&#160;</span>
-            <span class="stat-title">Antarctic<br/>temperature</span>
-        </p>
-        <p>
-            <span class="stat wind_speed">&#160;</span>
-            <span class="stat-title">Antarctic<br/>windspeed</span>
-        </p>
-    </div>
-    <div class="ds-dashboard-widgets">
-        <p>
-            <span class="stat time" data-timezone="-3">&#160;</span>
-            <span class="stat-title">Antarctic<br/>time</span>
-        </p>
+    <div class="ds-dashboard-widgets full-width">
         <p>
             <span class="stat" id="set-one" data-countdown="nov 1 2015 17:05:00"></span>
-            <span class="stat-title">Expedition<br/>duration</span>
+            <span class="stat-title">Expedition duration</span>
         </p>
     </div>
-    <div class="ds-dashboard-widgets effort" id="set-one-effort">
+    <div  data-lat="-78.4644904" data-lon="106.8317842">
+        <div class="ds-dashboard-widgets third-width">
+            <p>
+                <span class="stat temperature">&#160;</span>
+                <span class="stat-title">Antarctic<br/>temperature</span>
+            </p>
+        </div>
+        <div class="ds-dashboard-widgets third-width">
+            <p>
+                <span class="stat time" data-timezone="-3">&#160;</span>
+                <span class="stat-title">Antarctic<br/>time</span>
+            </p>
+        </div>
+        <div class="ds-dashboard-widgets third-width">
+            <p>
+                <span class="stat wind_speed">&#160;</span>
+                <span class="stat-title">Antarctic<br/>windspeed</span>
+            </p>
+        </div>
+    </div>
+    <div class="ds-dashboard-widgets effort set-one-effort half-width">
         <p>
             <span class="stat calories" data-calories="10000">&#160;</span>
             <span class="stat-title">Calories<br/>burnt</span>
         </p>
+    </div>
+    <div class="ds-dashboard-widgets effort set-one-effort half-width">
         <p>
             <span class="stat steps" data-steps ="41714">&#160;</span> <!-- 730 miles * 2k steps / 35 days = 41714 -->
             <span class="stat-title">Steps<br/>taken</span>
@@ -257,12 +281,12 @@
                 },
 
                 effort = function(timeID, effortID) {
-                    var calorieContainer = document.querySelector("#" + effortID + " > p .calories");
+                    var calorieContainer = document.querySelector("." + effortID + " > p .calories");
                     var calorieRate = calorieContainer.getAttribute('data-calories') / 1440;
                     var calorieID = "cal_" + new Date().getTime().toString();
                     calorieContainer.id = calorieID;
 
-                    var stepsContainer = document.querySelector("#" + effortID + " > p .steps");
+                    var stepsContainer = document.querySelector("." + effortID + " > p .steps");
 
                     var stepsRate = stepsContainer.getAttribute('data-steps') / 1440;
                     var stepID = "step_" + new Date().getTime().toString();
@@ -288,14 +312,4 @@
             weather();
 
         }());
-
-        /*@cc_on
-        (function(f){
-         window.setTimeout =f(window.setTimeout);
-         window.setInterval =f(window.setInterval);
-        })(function(f){return function(c,t){var a=[].slice.call(arguments,2);return f(function(){c.apply(this,a)},t)}});
-        @*/
     </script>
-</body>
-
-</html>
