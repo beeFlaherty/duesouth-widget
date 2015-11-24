@@ -139,6 +139,27 @@
                 return n;
             };
 
+            var ajax = function(url, callback) {
+                var xhr;
+
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xhr = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        callback(xhr.responseText);
+                    }
+                };
+
+                xhr.open('GET', url, true);
+                xhr.send();
+            };
+
             var timezone = function() {
 
                     var timezoneElements = document.querySelectorAll("[data-timezone]");
@@ -256,25 +277,29 @@
                                 var UniqueID = "weather_" + new Date().getTime().toString();
                                 weatherElements[i].id = UniqueID;
 
-                                var xhr;
-                                if (window.XMLHttpRequest) {
-                                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                                    xhr = new XMLHttpRequest();
-                                } else {
-                                    // code for IE6, IE5
-                                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-                                }
+                                ajax(
+                                    '//api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=8c5974c961ce95405a6d008676ca4555',
+                                    onJsonLoad
+                                );
+                                // var xhr;
+                                // if (window.XMLHttpRequest) {
+                                //     // code for IE7+, Firefox, Chrome, Opera, Safari
+                                //     xhr = new XMLHttpRequest();
+                                // } else {
+                                //     // code for IE6, IE5
+                                //     xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                                // }
 
-                                var url = '//api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&units=metric&APPID=8c5974c961ce95405a6d008676ca4555&';
+                                // var url =
 
-                                xhr.onreadystatechange = function() {
-                                    if (xhr.readyState == 4 && xhr.status == 200) {
-                                        onJsonLoad(xhr.responseText);
-                                    }
-                                };
+                                // xhr.onreadystatechange = function() {
+                                //     if (xhr.readyState == 4 && xhr.status == 200) {
+                                //         onJsonLoad(xhr.responseText);
+                                //     }
+                                // };
 
-                                xhr.open('GET', url, true);
-                                xhr.send();
+                                // xhr.open('GET', url, true);
+                                // xhr.send();
                             }
                         }
                     }
