@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Due South 2015</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <style>
+    #progressMap {
+      width: 100%;
+      height: 100%;
+      min-height: 390px;
+    }
+  </style>
+  <div id="progressMap"></div>
+  <script>
+    function initProgressMap() {
+      var progressMap = new google.maps.Map(document.getElementById('progressMap'), {
+        zoom: 6,
+        center: {lat: -81.0314969, lng: -87.0630392},
+        streetViewControl: false,
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+        }
+      });
+
+      var kmlLayer = new google.maps.KmlLayer({
+        url: 'https://share.delorme.com/feed/share/LukeRobertson?d1=2015-12-01T00:00Z',
+        map: progressMap
+      });
+    }
+  </script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFEoMo5JqKzl-yxK3lSvuGYvjS2FQ8bI8&signed_in=true&callback=initProgressMap"></script>
+</body>
+</html>
