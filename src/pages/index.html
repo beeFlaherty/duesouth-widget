@@ -125,6 +125,12 @@
         <span class="stat-title">Steps<br/>taken</span>
     </p>
 </div>
+<div class="ds-dashboard-widgets effort set-one-effort half-width">
+    <p>
+        <span class="stat miles" data-miles ="21">&#160;</span> <!-- 730 miles / 35 days = 20.86 -->
+        <span class="stat-title">Miles<br/>covered</span>
+    </p>
+</div>
 
 <script>
     (function() {
@@ -299,20 +305,27 @@
                 calorieContainer.id = calorieID;
 
                 var stepsContainer = document.querySelector("." + effortID + " > p .steps");
+                var milesContainer = document.querySelector("." + effortID + " > p .miles");
 
                 var stepsRate = stepsContainer.getAttribute('data-steps') / 1440;
                 var stepID = "step_" + new Date().getTime().toString();
                 stepsContainer.id = stepID;
+
+                var milesRate = milesContainer.getAttribute('data-miles') / 1440;
+                var milesID = "miles_" + new Date().getTime().toString();
+                milesContainer.id = milesID;
 
                 var timeElapsed = document.getElementById(timeID).getAttribute('data-elapsed');
 
                 var caloriesBurnt = numberWithCommas(Math.round(calorieRate * (timeElapsed / MINUTE)));
 
                 var stepsTaken = numberWithCommas(Math.round(stepsRate * (timeElapsed / MINUTE)));
+                var milesTaken = numberWithCommas(Math.round(milesRate * (timeElapsed / MINUTE)));
 
                 //set to display
                 document.getElementById(calorieID).innerHTML = caloriesBurnt;
                 document.getElementById(stepID).innerHTML = stepsTaken;
+                document.getElementById(milesID).innerHTML = milesTaken;
             };
 
         function numberWithCommas(x) {
